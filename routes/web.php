@@ -15,8 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    echo "OLA";
-});
+    return view('auth.register');});
 Route::get('home', 'HomeController@home')->name('home');
 
 Auth::routes();
