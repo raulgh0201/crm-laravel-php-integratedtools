@@ -79,18 +79,18 @@ header ("Expires: Sat, 1 Jul 2000 05:00:00 GMT");
 	<div class="or-seperator"><i>O</i></div>
         <div class="row mx-gutters-2 mb-4">
             <div class="col-sm-6 mb-2 mb-sm-0">
-              <button type="button" class="btn btn-block btn-sm btn-facebook">
+              <a href="{{ route('social.oauth', 'facebook') }}" type="button" class="btn btn-block btn-sm btn-facebook">
                 <i class="fa fa-facebook mr-2"></i>
                 Con Facebook
-              </button>
+              </a>
             </div>
             <div class="col-sm-6">
-              <button type="button" class="btn btn-block btn-sm btn-google">
+              <a href="{{ route('social.oauth', 'google') }}" type="button" class="btn btn-block btn-sm btn-google">
                 <i class="fa fa-google mr-2"></i>
                 Con Google
-              </button>
+              </a>
             </div>
         </div>
-        <p class="small text-center text-muted mb-0">>© 2020 IntegrateTools, Inc. Todos los derechos reservados.</p>
+        <p class="small text-center text-muted mb-0">© 2020 IntegratedTools, Inc. Todos los derechos reservados.</p>
     </form>
 </div>

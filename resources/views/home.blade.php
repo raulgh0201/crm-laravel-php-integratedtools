@@ -153,7 +153,7 @@
                   </a>
             </a>
             <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
+            <a href="{{route('logout')}}" class="dropdown-item">
                 <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
             </a>
             <div class="dropdown-divider"></div>

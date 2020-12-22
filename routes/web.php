@@ -24,11 +24,9 @@ Auth::routes();
 // ------------------------------register---------------------------------------
 Route::get('/register', 'App\Http\Controllers\Auth\RegisterController@register')->name('register');
 Route::post('/register', 'App\Http\Controllers\Auth\RegisterController@storeUser')->name('register');
-
 Route::view('/home', 'home')->middleware('auth');
 Route::group(['middleware' => 'auth:admin'], function () {
 });
-
 
 // -----------------------------login-----------------------------------------
 Route::get('/login', 'App\Http\Controllers\Auth\LoginController@login')->name('login');
@@ -41,12 +39,8 @@ Route::post('forget-password', 'App\Http\Controllers\Auth\ForgotPasswordControll
 
 Route::get('reset-password/{token}', 'App\Http\Controllers\Auth\ResetPasswordController@getPassword');
 Route::post('reset-password', 'App\Http\Controllers\Auth\ResetPasswordController@updatePassword');
-// -----------------------------login google ------------------------------
-/*Route::group(['prefix' => 'auth'], function () {
-    Route::get('/{provider}', 'Auth\LoginController@redirectToProvider');
-    Route::get('/{provider}/callback', 'Auth\LoginController@handleProviderCallback');
-});*/
 
-Route::get('login/{driver}', 'Auth\LoginController@redirectToProvider');
-Route::get('login/{driver}/callback', 'Auth\LoginController@handleProviderCallback');
+// -----------------------------login socialite ------------------------------
+Route::get('oauth/{driver}', 'App\Http\Controllers\Auth\LoginController@redirectToProvider')->name('social.oauth');
+Route::get('oauth/{driver}/callback', 'App\Http\Controllers\Auth\LoginController@handleProviderCallback')->name('social.callback');
 
