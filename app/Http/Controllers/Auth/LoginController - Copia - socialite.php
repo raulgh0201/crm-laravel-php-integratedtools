@@ -14,12 +14,13 @@ use Laravel\Socialite\Facades\Socialite;
 
 class LoginController extends Controller
 {
-    public function showLoginForm()
+    public function login()
     {
+
       return view('auth.login');
     }
 
-    public function login(Request $request)
+    public function authenticate(Request $request)
     {
         $request->validate([
             'email' => 'required|string|email',
@@ -42,7 +43,7 @@ class LoginController extends Controller
         $request->session()->invalidate();    
         $request->session()->regenerateToken();
             
-        return redirect('login')->with('error', 'Has cerrado sesión');;
+        return redirect('login');
     }
     
     protected $providers = [

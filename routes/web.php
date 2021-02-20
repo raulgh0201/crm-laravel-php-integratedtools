@@ -18,19 +18,17 @@ use Laravel\Socialite\Facades\Socialite;
 Route::get('/', function () {
     return view('auth.register');
 });
-Route::get('home', 'HomeController@home')->name('home');
 
-Auth::routes();
+Auth::routes(['verify'=> true]);
+Route::get('home', 'App\Http\Controllers\HomeController@index')->name('home');;
+
 // ------------------------------register---------------------------------------
-Route::get('/register', 'App\Http\Controllers\Auth\RegisterController@register')->name('register');
-Route::post('/register', 'App\Http\Controllers\Auth\RegisterController@storeUser')->name('register');
-Route::view('/home', 'home')->middleware('auth');
-Route::group(['middleware' => 'auth:admin'], function () {
-});
+Route::get('/register', 'App\Http\Controllers\Auth\RegisterController@showRegistrationForm')->name('register');
+Route::post('/register', 'App\Http\Controllers\Auth\RegisterController@register')->name('register');
 
 // -----------------------------login-----------------------------------------
-Route::get('/login', 'App\Http\Controllers\Auth\LoginController@login')->name('login');
-Route::post('/login', 'App\Http\Controllers\Auth\LoginController@authenticate');
+Route::get('/login', 'App\Http\Controllers\Auth\LoginController@showLoginForm')->name('login');
+Route::post('/login', 'App\Http\Controllers\Auth\LoginController@login');
 Route::get('/logout', 'App\Http\Controllers\Auth\LoginController@logout')->name('logout');
 
 // -----------------------------forget password ------------------------------

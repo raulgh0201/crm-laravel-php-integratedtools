@@ -4,6 +4,7 @@ header ("Expires: Sat, 1 Jul 2000 05:00:00 GMT");
 
 ?>
 @extends('layouts.app')
+@section('content')
 <div class="login-form">
     <form method="POST" action="{{ route('register') }}">
         @csrf
@@ -94,3 +95,4 @@ header ("Expires: Sat, 1 Jul 2000 05:00:00 GMT");
         <p class="small text-center text-muted mb-0">© 2020 IntegratedTools, Inc. Todos los derechos reservados.</p>
     </form>
 </div>
+@endsection
