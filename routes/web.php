@@ -19,7 +19,7 @@ Route::get('/', function () {
     return view('auth.register');
 });
 
-Auth::routes(['verify'=> true]);
+Auth::routes();
 Route::get('home', 'App\Http\Controllers\HomeController@index')->name('home');;
 
 // ------------------------------register---------------------------------------
@@ -42,3 +42,19 @@ Route::post('reset-password', 'App\Http\Controllers\Auth\ResetPasswordController
 Route::get('oauth/{driver}', 'App\Http\Controllers\Auth\LoginController@redirectToProvider')->name('social.oauth');
 Route::get('oauth/{driver}/callback', 'App\Http\Controllers\Auth\LoginController@handleProviderCallback')->name('social.callback');
 
+
+
+Route::group(['middleware'=>['auth','isAdmin']], function() {
+
+    Route::get('admin/users', 'App\Http\Controllers\CRM\Admin\UsersController@index')->name('admin.users');
+    Route::get('admin/user/{id}', 'App\Http\Controllers\CRM\Admin\UsersController@getUser')->name('admin.user');
+    Route::get('admin/prospects', 'ProspectController@index')->name('admin.prospects');
+    Route::get('admin/prospect/{id}', 'ProspectController@show')->name('admin.prospect');
+
+    Route::post('admin/users/store', 'App\Http\Controllers\CRM\Admin\UsersController@store')->name('admin.user.store');
+    Route::post('admin/prospect/store', 'ProspectController@store')->name('admin.prospect.store');
+
+    Route::put('admin/user/update', 'App\Http\Controllers\CRM\Admin\UsersController@update')->name('admin.user.update');
+});
+
+ 

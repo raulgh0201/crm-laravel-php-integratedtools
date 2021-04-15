@@ -1,30 +1,25 @@
-No eres admin cerdo!
-{{-- Esto es un comentario 
-!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Dashboard</title>
+  <title>@yield('title')</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="/adminlte/plugins/fontawesome-free/css/all.min.css">
-  <link rel="stylesheet" href="/adminlte/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- overlayScrollbars -->
   <link rel="stylesheet" href="/adminlte/dist/css/adminlte.min.css">
-  <link rel="stylesheet" href="/assets/css/style.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
-<body class="hold-transition  sidebar-mini">
-<!-- Site wrapper -->
+<body class="hold-transition sidebar-mini">
 <div class="wrapper">
   <!-- Navbar -->
-  <nav class="main-header navbar navbar-expand navbar-black navbar-light">
+  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
       <li class="nav-item">
@@ -171,7 +166,8 @@ No eres admin cerdo!
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
-  @include('directorio.archivo')
+  @yield('left-menu')
+  
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -194,121 +190,10 @@ No eres admin cerdo!
 
     <!-- Main content -->
     <section class="content">
-      <div class="row" id="contenido_principal">
-        <div class="col-sm-3">
-            <div class="card card-primary">
-              <div class="card-header">
-                <h3 class="card-title">Empleados Activos</h3>
-                <div class="card-tools">
-                  <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
-                  </button>
-                </div>
-              </div>
-              <div class="card-body">
-                <div class=text-center>5</div>
-              </div>
-            </div>
-        </div>
-        <div class="col-sm-3">
-            <div class="card card-primary">
-              <div class="card-header">
-                <h3 class="card-title">Actual Líder de Vendas</h3>
-                <div class="card-tools">
-                  <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
-                  </button>
-                </div>
-              </div>
-              <div class="card-body">
-                <div class=text-center>Raul Garcia</div>
-              </div>
-            </div>
-        </div>
-        <div class="col-sm-3">
-            <div class="card card-primary">
-              <div class="card-header">
-                <h3 class="card-title">Vendas por Mes</h3>
-                <div class="card-tools">
-                  <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
-                  </button>
-                </div>
-              </div>
-              <div class="card-body">
-                <div class=text-center>2000€</div>
-              </div>
-            </div>
-        </div>
-        <div class="col-sm-3">
-            <div class="card card-primary">
-              <div class="card-header">
-                <h3 class="card-title">Total de Ventas</h3>
-                <div class="card-tools">
-                  <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
-                  </button>
-                </div>
-              </div>
-              <div class="card-body">
-                <div class=text-center>500000€</div>
-              </div>
-            </div>
-        </div>       
-      </div>
-
-      <div class="row mt-4">
-
-        <div class="col-sm-6">
-          <div class="card card-primary">
-            <div class="card-header">
-              <h3 class="card-title">Proyectos no asignados</h3>
-               <div class="card-tools">
-                  <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
-                  </button>
-               </div>
-            </div>
-            <div class="card-body">
-              <ul class="list-group list-group-flush">
-                @for($i = 0; $i < 6;$i++)
-                <li class="list-group-item">
-                    MR.Prospect <span class="float-right btn btn-sm btn-success">Assignar</span>
-                </li>
-                @endfor
-                <li class="list-group-item">
-                    <a href="#" class="btn btn-block btn-md btn-primary">Ver todo lo que no está asignado</a>
-                </li>
-              </ul>
-            </div>
-          </div>       
-        </div>
-
-        <div class="col-sm-6">
-          <div class="card card-primary">
-            <div class="card-header">
-              <h3 class="card-title">Estimación Reciente</h3>
-               <div class="card-tools">
-                  <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
-                  </button>
-               </div>
-            </div>
-            <div class="card-body">
-              <ul class="list-group list-group-flush">
-                @for($i = 0; $i < 6;$i++)
-                <li class="list-group-item">
-                    MR.Prospect ⇸ June 5th, 2020 ⇸ Valor: 100000€  <span class="float-right btn btn-sm btn-success">Detalles</span>
-                </li>
-                @endfor
-                <li class="list-group-item">
-                    <a href="#" class="btn btn-block btn-md btn-primary">Ver toda la estimación reciente</a>
-                </li>
-              </ul>
-            </div>
-          </div>       
-        </div>
-
-      </div>
-
+          @yield('content')<!--Guardamos el contenido en una etiqueta yield para reutilizar más adelante-->      
     </section>
     
 
-     @yield('contenido')<!--Guardamos el contenido en una etiqueta yield para reutilizar más adelante-->
 
     
     <!-- /.content -->
@@ -372,7 +257,5 @@ No eres admin cerdo!
 <script src="/adminlte/dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="/adminlte/dist/js/demo.js"></script>
-<script src="/adminlte/plugins/bootstrap-colorpicker/bootstrap-colorpicker.min.js"></script>
 </body>
 </html>
---}}
