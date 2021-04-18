@@ -2,7 +2,7 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="../../index3.html" class="brand-link">
-      <img src="assets/image/logo-D.png"
+      <img src= "{{ asset('assets/image/logo-D.png') }}" 
         alt="Logo" width="10" height="30"
         class="brand-image img-circle elevation-9">
       <span class="brand-text font-weight-light">IntegratedTools</span>
@@ -29,6 +29,16 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
+          
+          <li class="nav-item">
+            <a href="{{ route('home') }}" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Dashboard
+                <span class="right badge badge-danger">New</span>
+              </p>
+            </a>
+          </li>
           <li class="nav-item">
             <a href="{{ route('admin.users') }}" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
@@ -39,19 +49,10 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="../widgets.html" class="nav-link">
+            <a href="{{ route ('admin.prospects')}}" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
-                asdfasdf
-                <span class="right badge badge-danger">New</span>
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="../widgets.html" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
-              <p>
-                asdfasdfasdf
+                Prospectos                 
                 <span class="right badge badge-danger">New</span>
               </p>
             </a>

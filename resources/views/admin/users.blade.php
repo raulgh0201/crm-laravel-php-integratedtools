@@ -1,5 +1,5 @@
 @extends('admin.layouts.app')
-@section('title') Users @endsection
+@section('title') Usuarios @endsection
 
 @section('left-menu')
 
@@ -9,19 +9,23 @@
 
 @section('content')
 
-    @if(session('success'))
-            <div class="alert alert-success">
-                {{session('success')}}
-            </div>
-    @endif
-
     <div class="row">
+
+        @if(session('success'))
+                <div class="alert alert-success">
+                    {{session('success')}}
+                </div>
+        @endif
 
         <div class="col-sm-5">
                 <div class="card">
                     <div class="card-body">
-                        <button class="btn btn-block btn-primary" id="show-new-user-form">Añadir nuevo usuario</button>
-                        @include('admin.layouts.crm.forms.add_user')
+                        <button class="btn btn-block btn-primary" id="show-new-user-form" onclick="mostrar()">Añadir nuevo usuario</button>
+                        <div id="componente">
+                        @component('admin.layouts.crm.forms.add_user')
+
+                        @endcomponent
+                        </div>
                     </div>
                 </div>
                 
@@ -49,3 +53,4 @@
 @push('admin.layouts.scripts.scripts')
     <script src="{{ asset('js/admin/users.js') }}"></script>
 @endpush
+<script src="{{ asset('js/admin/users.js') }}"></script>
