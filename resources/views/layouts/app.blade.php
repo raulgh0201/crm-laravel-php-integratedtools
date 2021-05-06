@@ -13,6 +13,8 @@
 
 <!-- --------------style css --------------->
 <link rel="stylesheet" href="assets/css/style.css">
+ @livewireStyles
+ @livewireScripts
 
 </head>
 <body>

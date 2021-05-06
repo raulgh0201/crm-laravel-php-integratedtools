@@ -18,14 +18,18 @@ class UsersController extends Controller
         $user = Auth::user();     
         $users = User::all();
 
-        return view('admin.users', compact('users','user'));
+        return view('admin.user.users', compact('users','user'));
     }
 
     public function getUser(Request $request, $id)
     {
-        $user = User::findOrFail($id);
+        $currentUser = Auth::user(); 
+        $user = User::find($id);
+        if(!$user){
+            return redirect('admin/users')->with('error','No se ha Encontrado el Empleado');
+        }
 
-        return view('admin.user', ['user' => $user]);
+        return view('admin.user.user', ['employee' => $user],['user' => $currentUser ]);
     }
 
     public function store(Request $request)
@@ -48,7 +52,7 @@ class UsersController extends Controller
 
         $user->save();
 
-        return redirect('admin/users')->with('success', 'Usuario Añadido Satisfactoriamente');
+        return redirect('admin/users')->with('success', 'Usuario Creado Correctamente');
 
     }
 
@@ -56,15 +60,17 @@ class UsersController extends Controller
 
         // dd($request);
         // Manualy check the database to see if their are any emails that it matches in the database other than this users email.
-
+       
+        echo "hola";
         $request->validate([
             'id' => 'required',
             'name' => 'required|min:6',
-            'email' => 'required|email',
+            'email' => 'required|unique:users,email,' .$request->id,
             'role' => 'required',
             'isActive' => 'required',
         ]);
 
+       
         $user = User::find($request->id);
 
         $user->name = $request->name;
@@ -74,7 +80,7 @@ class UsersController extends Controller
 
         $user->save();
 
-        return redirect('admin/user/' . $user->id)->with('success', 'Successfully Updated The User');
+        return redirect('admin/user/' . $user->id)->with('success', 'Usuario Actualizado Correctamente');
 
     }
 }

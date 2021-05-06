@@ -1,0 +1,21 @@
+/* Modal Styles */
+.modal-style{
+    width: 60%;
+    position: absolute;
+    top: 10%;
+    left: 55%;
+    transform: translateX(-50%);
+    z-index: 10;
+    box-shadow: 0 0 50px darkgrey;
+    display: none;
+ 
+}
+
+.modal-style .close-modal{
+    font-weight: 700;
+    cursor: pointer;
+}
+.modal-style .close-modal:hover{
+    color: red;
+    
+}

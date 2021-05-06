@@ -15,8 +15,16 @@
   <link rel="stylesheet" href="/adminlte/dist/css/adminlte.min.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <!--Specific CSS for a single view -->
+  @yield('style')
+  @livewireStyles
+  @livewireScripts
+ 
+
+
 </head>
 <body class="hold-transition sidebar-mini">
+
 <div class="wrapper">
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
@@ -26,14 +34,14 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="../../index3.html" class="nav-link">Home</a>
+        <a href="{{ route('home') }}" class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Contacto</a>
+      <a href="{{ route('admin.contacts') }}" class="nav-link">Contacto</a>
       </li>
     </ul>
 
-    <!-- SEARCH FORM -->
+    <!-- SEARCH FORM 
     <form class="form-inline ml-3">
       <div class="input-group input-group-sm">
         <input class="form-control form-control-navbar" type="search" placeholder="Buscar" aria-label="Search">
@@ -45,9 +53,9 @@
       </div>
     </form>
 
-    <!-- Right navbar links -->
+    -->
     <ul class="navbar-nav ml-auto">
-      <!-- Messages Dropdown Menu -->
+     <!--
       <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
           <i class="far fa-comments"></i>
@@ -55,7 +63,7 @@
         </a>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
           <a href="#" class="dropdown-item">
-            <!-- Message Start -->
+           
             <div class="media">
               <img src="/dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
               <div class="media-body">
@@ -67,11 +75,11 @@
                 <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
               </div>
             </div>
-            <!-- Message End -->
+           
           </a>
           <div class="dropdown-divider"></div>
           <a href="#" class="dropdown-item">
-            <!-- Message Start -->
+            
             <div class="media">
               <img src="../../dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
               <div class="media-body">
@@ -83,11 +91,11 @@
                 <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
               </div>
             </div>
-            <!-- Message End -->
+             
           </a>
           <div class="dropdown-divider"></div>
           <a href="#" class="dropdown-item">
-            <!-- Message Start -->
+            
             <div class="media">
               <img src="../../dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
               <div class="media-body">
@@ -99,13 +107,13 @@
                 <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
               </div>
             </div>
-            <!-- Message End -->
+            
           </a>
           <div class="dropdown-divider"></div>
           <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
         </div>
       </li>
-      <!-- Notifications Dropdown Menu -->
+      
       <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
           <i class="far fa-bell"></i>
@@ -131,7 +139,7 @@
           <div class="dropdown-divider"></div>
           <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
         </div>
-      </li>
+      </li>-->
       <!--Logout-->
 
       <li class="nav-item dropdown">
@@ -172,30 +180,10 @@
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1>PRUEBA</h1>
-          </div>
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">PRUEBA</li>
-            </ol>
-          </div>
-        </div>
-      </div><!-- /.container-fluid -->
-    </section>
-
     <!-- Main content -->
     <section class="content">
           @yield('content')<!--Guardamos el contenido en una etiqueta yield para reutilizar más adelante-->      
     </section>
-    
-
-
-    
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
@@ -214,39 +202,7 @@
   <!-- /.control-sidebar -->
 </div>
 <!-- script cargar contenido -->
-<script>
-	var idioma_espanol = {
-			select: {
-			rows: "%d fila seleccionada"
-			},
-			"sProcessing":     "Procesando...",
-			"sLengthMenu":     "Mostrar _MENU_ registros",
-			"sZeroRecords":    "No se encontraron resultados",
-			"sEmptyTable":     "Ning&uacute;n dato disponible en esta tabla",
-			"sInfo":           "Registros del (_START_ al _END_) total de _TOTAL_ registros",
-			"sInfoEmpty":      "Registros del (0 al 0) total de 0 registros",
-			"sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
-			"sInfoPostFix":    "",
-			"sSearch":         "Buscar:",
-			"sUrl":            "",
-			"sInfoThousands":  ",",
-			"sLoadingRecords": "<b>No se encontraron datos</b>",
-			"oPaginate": {
-					"sFirst":    "Primero",
-					"sLast":     "Último",
-					"sNext":     "Siguiente",
-					"sPrevious": "Anterior"
-			},
-			"oAria": {
-					"sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
-					"sSortDescending": ": Activar para ordenar la columna de manera descendente"
-			}
-	 }
-  function cargar_contenido(contenedor,contenido){
-      $("#"+contenedor).load(contenido);
-  }
-  $.widget.bridge('uibutton', $.ui.button);
-</script>
+
 <!-- ./wrapper -->
 
 <!-- jQuery -->
@@ -257,5 +213,6 @@
 <script src="/adminlte/dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="/adminlte/dist/js/demo.js"></script>
+
 </body>
 </html>

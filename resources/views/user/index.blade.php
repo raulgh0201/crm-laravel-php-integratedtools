@@ -1,7 +1,6 @@
 @extends('user.layouts.app')
 
 @section('title') Dashboard @endsection
-
 @section('left-menu')
 
     @include('user.layouts.menus.sidebar')
@@ -10,6 +9,6 @@
 
 @section('content')
 
-    @include('user.layouts.partials.dashboard')
+    @include('user.layouts.crm.dashboard')
 
 @endsection

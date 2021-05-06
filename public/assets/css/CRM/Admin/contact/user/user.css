@@ -1,0 +1,61 @@
+#edit-details-modal{
+  margin-top:-297px !important;
+  width: 100%;
+  
+  border-radius: 15px;
+  box-shadow: 0 0 5px #CCC;
+  background: #CCC;
+  position: relative;
+  transition: all 5s ease-in-out;
+  margin: auto auto;
+  visibility: visible;
+  opacity: 1;
+}
+#overlay {
+    opacity: 1;
+}
+/* */
+.card-header{
+    background-color: #12324d !important;  
+    color: #fff !important; 
+}
+.btn-primary{
+    background-color: #12324d !important; 
+}
+.small-box.bg-info{
+    background-color: #12324d !important;
+}
+h5{
+    margin-top:25px !important;
+    margin-bottom:25px !important;
+}
+.icon{
+    color: #b8b9b938 !important;
+}
+.small-box-footer{
+    background-color: #b8b9b938 !important;
+    font-size: 18px !important;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+hr {
+    height: 10px;
+    width: 100%;
+    background-color: #b8b9b938;
+}
+.users-info{
+    color: #fff;
+    font-size: 18px !important;
+    height:30px;
+    padding-left: 2%;
+    float: right;
+
+}
+.inner .btn.btn-success{
+    
+    margin-top:-47px;
+    margin-left:590px
+}
+.small-box{
+    margin-top:20px; 
+}

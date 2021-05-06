@@ -13,7 +13,7 @@ class CreateProspectsTable extends Migration
      */
     public function up()
     {
-        Schema::create('prospects', function (Blueprint $table) {
+        Schema::create('contacts', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('created_by')->default(1);
             $table->string('name');
@@ -24,8 +24,9 @@ class CreateProspectsTable extends Migration
             $table->string('city')->nullable();
             $table->string('province_state')->nullable();
             $table->string('country')->nullable();
-            $table->text('note')->nullable(); // For use of users/sales people ** not hte prospect
-            $table->text('prospect_message')->nullable(); // For prospects use when filling out a form
+            $table->text('note')->nullable(); 
+            $table->text('prospect_message')->nullable(); 
+            $table->boolean('isProspect')->default(false);
             $table->boolean('isClient')->default(false);
             $table->boolean('isClaimable')->default(true);
             $table->integer('assigned')->default(1);

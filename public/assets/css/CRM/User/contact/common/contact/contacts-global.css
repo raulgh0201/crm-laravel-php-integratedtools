@@ -1,0 +1,57 @@
+
+    .btn-primary{
+            background-color:#12324d !important;
+            border:#12324d !important;
+        }
+    .btn-primary:hover{
+        background-color:#12324dd1 !important;
+        border:#12324dd1 !important;
+    }
+    .page-link {
+    color: #12324d !important;
+    }
+    .page-item.active .page-link {
+    color: #fff !important;
+    background-color: #12324d !important;
+    }
+
+    .small{  
+        font-size: 15px;
+        }
+    .lead.red{
+        font-size:30px;
+        padding-bottom: 19px;
+    }
+    .card-header.red{
+        font-size:25px;
+    }
+    .titulo-seccion{
+        padding-top:15px;
+        padding-left:25px;
+    }
+    .btn.btn-success{
+        margin-top:-45px;
+        margin-left:70%;
+    }
+    
+    
+    .modal-style{
+        width: 60%;
+        position: absolute;
+        top: 10%;
+        left: 55%;
+        transform: translateX(-50%);
+        z-index: 10;
+        box-shadow: 0 0 50px darkgrey;
+        display: none;
+     
+    }
+    
+    .modal-style .close-modal{
+        font-weight: 700;
+        cursor: pointer;
+    }
+    .modal-style .close-modal:hover{
+        color: red;
+        
+    }
