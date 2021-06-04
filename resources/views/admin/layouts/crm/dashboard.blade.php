@@ -20,7 +20,7 @@
         
 </style>
 <!--Estilos de mi aplicacion de tascas JS+CSS+HTML(ARNAU )-->
-<style>
+<!--<style>
     .wrap {
       margin: auto;
       max-width: 800px;
@@ -94,7 +94,7 @@
       margin-top: -160px;
       margin-left:50%;
     }
-  </style>
+  </style>-->
 <!--FIN-->
 <h1 class="titulo-seccion">DASHBOARD</h1>
 <div class="row dashboard" id="contenido_principal">
@@ -161,9 +161,10 @@
         <div class="col-sm-3">
           <div class="small-box bg-info">
               <div class="inner">
-                <h3>B.Sants</h3>
+                <h3>@if(isset($bestBuyer[0]->name)){{$bestBuyer[0]->name}} @else No Disponible @endif</h3>
+                
 
-                <p>Líder Ventas</p>
+                <p>Líder en Compras</p>
               </div>
               <div class="icon">
                 <i class="fas fa-shopping-cart"></i>
@@ -173,7 +174,22 @@
               </a>
           </div>
         </div>
-          
+        <div class="col-sm-3">
+          <div class="small-box bg-info">
+              <div class="inner">
+                <h3>@if(isset($bestSeller[0]->name)){{$bestSeller[0]->name}} @else No Disponible @endif</h3>
+                
+
+                <p>Líder en Ventas</p>
+              </div>
+              <div class="icon">
+                <i class="fas fa-shopping-cart"></i>
+              </div>
+              <a href="#" class="small-box-footer">
+                Más Información <i class="fas fa-arrow-circle-right"></i>
+              </a>
+          </div>
+        </div>  
         <div class="col-sm-3">
           <div class="small-box bg-info">
                 <div class="inner">
@@ -190,7 +206,7 @@
             </div>
           </div>           
       </div>
-        <!--APP DE JS PARA AÑADIR TAREAS-->
+        <!--APP DE JS PARA AÑADIR TAREAS
         <div class="col-sm-6 tareas">
           <div class="card">
             <div class="card-header notas">
@@ -217,7 +233,7 @@
               </div>
             </div>
           </div>
-        </div>
+        </div>-->
         <!--FIN-->
       <!--
       <div class="col-sm-3">
@@ -248,7 +264,7 @@
               </div>
             </div>
         </div>
-      -->
+     
 
       <div class="row mt-4">
 
@@ -298,6 +314,6 @@
               </ul>
             </div>
           </div>       
-        </div>
-</div>
+        </div> 
+</div>-->
 <script src="{{ asset('js/admin/contact/notas/notas.js') }}"></script>

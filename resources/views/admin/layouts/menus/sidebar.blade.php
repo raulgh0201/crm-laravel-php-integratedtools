@@ -100,9 +100,31 @@
             <a onclick="cargar_contenido('contenido_principal','usuarios/vista_usuario_listar.blade.php')" class="nav-link">
                 <i class="iconav fas fa-shopping-cart"></i> 
               <p class="pnav">
-              Vendas
+              Ventas
+              <i class=" iconav right fas fa-angle-left"></i>
               </p>
             </a>
+            <ul class="nav nav-treeview">
+            <li class="nav-item">
+                <a href="{{ route('productos.index') }}" class="nav-link">
+                  <i class="iconav fas fa-shopping-cart"></i>
+                  <p class="pnav">Productos</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('vender.index') }}" class="nav-link">
+                  <i class="iconav fas fa-shopping-cart"></i>
+                  <p class="pnav">Vender</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('ventas.index') }}" class="nav-link">
+                  <i class="iconav fas fa-shopping-cart"></i>
+                  <p class="pnav">Ventas</p>
+                </a>
+              </li>
+
+            </ul>
           </li>
           <!--<li class="nav-item has-treeview">
           <a onclick="cargar_contenido('contenido_principal','usuario/vista_usuario_listar.blade.php')">
@@ -129,7 +151,7 @@
             </ul> -->
           
           <li class="nav-item">
-            <a href="../widgets.html" class="nav-link">
+            <a href="{{route('admin.project.show')}}" class="nav-link">
                 <i class="iconav fas fa-project-diagram"></i>
               <p class="pnav">
                 Proyectos

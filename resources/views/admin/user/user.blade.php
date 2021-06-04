@@ -91,7 +91,7 @@
                         <input type="text" name="id" value="{{ $employee->id }}" hidden>
                         <div class="form-group">
                             <label for="name">Nombre de Usuario:</label>
-                            <input type="text" class="form-control" name="name" value="{{ $employee->name}}">
+                            <input type="text" class="form-control  {{ $errors->has('name') ? 'is-invalid' : '' }}" name="name" value="{{ $employee->name}}">
                             @if ($errors->has('name'))
                                 <div class="invalid-feedback">
                                     {{$errors->first('name')}}    
@@ -100,7 +100,7 @@
                         </div>
                         <div class="form-group">
                             <label for="email">Email:</label>
-                            <input type="text" class="form-control" name="email" value="{{ $employee->email}}">
+                            <input type="text" class="form-control  {{ $errors->has('email') ? 'is-invalid' : '' }}" name="email" value="{{ $employee->email}}">
                             @if ($errors->has('email'))
                             <!--No funciona la clase invalid-feedback para mostrar los errores, cambiar por otra o arreglar-->
                                 <div class="invalid-feedback">
@@ -108,9 +108,10 @@
                                 </div>                                    
                             @endif
                         </div>
+                            
                         <div class="form-group">
                             <label for="role">Rol:</label>
-                            <select name="role" class="form-control">
+                            <select name="role" class="form-control  {{ $errors->has('role') ? 'is-invalid' : '' }}">
                             <option value="{{ $employee->role }}">{{ ucfirst($employee->role) }}</option>
                                 <option value="user">User</option>
                                 <option value="admin">Admin</option>
@@ -125,7 +126,7 @@
                         </div>
                         <div class="form-group">
                             <label for="isActive">Usuario Activo:</label>
-                            <select name="isActive" class="form-control">
+                            <select name="isActive" class="form-control  {{ $errors->has('isActive') ? 'is-invalid' : '' }}">
                                 <option value="1" {{$employee->isActive == 1 ? 'default' : '' }}>Si</option>
                                 <option value="0" {{$employee->isActive == 0 ? 'default' : ''}}>No</option>
                             </select>

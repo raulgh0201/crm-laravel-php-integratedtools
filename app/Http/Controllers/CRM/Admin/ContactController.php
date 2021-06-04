@@ -50,6 +50,7 @@ class ContactController extends Controller
             'imgperfil' => 'image|nullable|max: 1999',
 
         ]);      
+       
         $contact = new Contact;
 
         $contact->created_by = Auth::id();
@@ -57,6 +58,9 @@ class ContactController extends Controller
         $contact->name = $request->name;
         $contact->email = $request->email;
         $contact->phone = $request->phone;
+        $contact->phone_2 = $request->phone_2;
+        $contact->instagram_user = $request->instagram;
+        $contact->facebook_user = $request->facebook;
         $contact->phone_2 = $request->phone_2;
         $contact->address = $request->address;
         $contact->city = $request->city;
@@ -139,7 +143,7 @@ class ContactController extends Controller
 
         $request->validate([
             'name' => 'required|min:6',
-            'email' => 'required|unique:contacts,email,' .$request->id,
+            'email' => 'unique:contacts,email,' .$request->id,
             'note' => 'required|min:20',
             'imgperfil' => 'image|nullable|max: 1999'
         ]);        
@@ -148,6 +152,8 @@ class ContactController extends Controller
 
         $contact->name = $request->name;        
         $contact->email = $request->email;
+        $contact->instagram_user = $request->instagram;
+        $contact->facebook_user = $request->facebook;
         $contact->phone = $request->phone;
         $contact->phone_2 = $request->phone_2;
         $contact->address = $request->address;

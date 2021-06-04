@@ -57,6 +57,8 @@ class ProspectController extends Controller
         $prospect->email = $request->email;
         $prospect->phone = $request->phone;
         $prospect->phone_2 = $request->phone_2;
+        $prospect->instagram_user = $request->instagram;
+        $prospect->facebook_user = $request->facebook;
         $prospect->address = $request->address;
         $prospect->city = $request->city;
         $prospect->province_state = $request->province_state;
@@ -141,6 +143,8 @@ class ProspectController extends Controller
         $prospect->email = $request->email;
         $prospect->phone = $request->phone;
         $prospect->phone_2 = $request->phone_2;
+        $prospect->instagram_user = $request->instagram;
+        $prospect->facebook_user = $request->facebook;
         $prospect->address = $request->address;
         $prospect->city = $request->city;
         $prospect->province_state = $request->province_state;

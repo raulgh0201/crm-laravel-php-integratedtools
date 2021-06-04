@@ -68,6 +68,18 @@
                           <li class="small"><span class="fa-li"><i class="fas fa-lg fa-envelope"></i></span>Email: {{!isset($client->email) ? 'No Especificado' : $client->email}}</li><hr>
                           <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span>Teléfono: {{!isset($client->phone) ? "No Especificado" : $client->phone}}</li><hr>
                           <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone-square"></i></span>Teléfono Secundario: {{!isset($client->phone_2  ) ? 'No Especificado' : $client->phone_2 }}</li><hr>
+                          
+                          @if(empty($client->instagram_user))
+                            <li class="small"><span class="fa-li"> <i class="fab fa-lg fa-instagram"></i></span>No Especificado</li><hr>
+                          @else
+                            <li class="small"><span class="fa-li"> <i class="fab fa-lg fa-instagram"></i></span><a href='https://www.instagram.com/{{$client->instagram_user}}'>{{$client->instagram_user}}</a></li><hr>
+                          @endif                         
+
+                         @if(empty($client->facebook_user))
+                            <li class="small"><span class="fa-li"> <i class="fab fa-lg fa-facebook"></i></span>No Especificado</span></li><hr>
+                         @else
+                            <li class="small"><span class="fa-li"> <i class="fab fa-lg fa-facebook"></i></span><a href='https://www.facebook.com/{{$client->facebook_user}}'>{{$client->facebook_user}}</a></li><hr>
+                          @endif
                           <li class="small"><span class="fa-li"><i class="fas fa-lg fa-route"></i></span>Dirección: {{!isset($client->address) ? 'No Especificado' : $client->address}}</li><hr>
                           <li class="small"><span class="fa-li"><i class="fas fa-lg fa-street-view"></i></span>Ciudad: {{!isset($client->city) ? 'No Especificado' :  $client->city}}</li><hr>
                           <li class="small"><span class="fa-li"><i class="fas fa-lg fa-location-arrow"></i></span>Provincia/Estado: {{!isset($client->province_state) ? 'No Especificado' : $client->province_state}}</li><hr>
@@ -145,6 +157,24 @@
                             <div class="form-group">
                                 <label for="phone_2">Teléfono Secundario:</label>
                                 <input type="text" class="form-control" name="phone_2" value="{{ $client->phone_2 }}">
+                            </div>
+                            <div class="form-group">
+                                <label for="instagram">Usuario Instagram</label>
+                                <input type="text" class="form-control {{ $errors->has('instagram') ? 'is-invalid' : '' }}" name="instagram" value="{{ $client->facebook }}">
+                                @if($errors->has('instagram'))
+                                    <div class="invalid-feedback">
+                                        {{ $errors->first('instagram') }}
+                                    </div>
+                                @endif
+                            </div>
+                            <div class="form-group">
+                                <label for="facebook">Usuario Facebook</label>
+                                <input type="text" class="form-control {{ $errors->has('facebook') ? 'is-invalid' : '' }}" name="facebook" value="{{ $client->instagram }}">
+                                @if($errors->has('facebook'))
+                                    <div class="invalid-feedback">
+                                        {{ $errors->first('facebook') }}
+                                    </div>
+                                @endif
                             </div>
                             <div class="form-group">
                                 <label for="address">Dirección:</label>

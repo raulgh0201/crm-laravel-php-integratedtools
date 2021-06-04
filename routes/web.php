@@ -74,30 +74,89 @@ Route::group(['middleware'=>['auth','isAdmin']], function() {
     Route::get('admin/client/delete/{id}', 'App\Http\Controllers\CRM\Admin\ClientController@destroy')->name('admin.client.destroy');
     Route::put('admin/client/update', 'App\Http\Controllers\CRM\Admin\ClientController@update')->name('admin.client.update');
 
+    //Ventas
+    Route::resource("productos", "App\Http\Controllers\CRM\Admin\ProductosController");
+    Route::resource("ventas", "App\Http\Controllers\CRM\Admin\VentasController");
+    Route::get("/vender", "App\Http\Controllers\CRM\Admin\VenderController@index")->name("vender.index");
+    Route::post("/productoDeVenta", "App\Http\Controllers\CRM\Admin\VenderController@agregarProductoVenta")->name("agregarProductoVenta");
+    Route::delete("/productoDeVenta", "App\Http\Controllers\CRM\Admin\VenderController@quitarProductoDeVenta")->name("quitarProductoDeVenta");
+    Route::post("/cancelarVenta", "App\Http\Controllers\CRM\Admin\VenderController@cancelarVenta")->name("cancelarVenta");
+    Route::post("/terminarVenta", "App\Http\Controllers\CRM\Admin\VenderController@terminarVenta")->name("terminarVenta");
+    Route::post("/terminarOCancelarVenta", "App\Http\Controllers\CRM\Admin\VenderController@terminarOCancelarVenta")->name("terminarOCancelarVenta");
+    Route::get('ventas/prospect/{id}', 'App\Http\Controllers\CRM\Ventas\ProspectController@show')->name('sales.prospect');
+    Route::get('ventas/prospects', 'App\Http\Controllers\CRM\Ventas\ProspectController@index')->name('sales.prospects'); 
+
+    
+
+	Route::get('admin/projects', 'App\Http\Controllers\CRM\Admin\ProjectController@index')->name('admin.project.show');
+	Route::get('admin/projects/create', 'App\Http\Controllers\CRM\Admin\ProjectController@create')->name('admin.project.create');
+	Route::get('admin/projects/edit/{id}', 'App\Http\Controllers\CRM\Admin\ProjectController@edit')->name('admin.project.edit');
+	Route::post('admin/projects/update/{id}', 'App\Http\Controllers\CRM\Admin\ProjectController@update')->name('admin.project.update');
+	Route::get('admin/projects/delete/{id}', 'App\Http\Controllers\CRM\Admin\ProjectController@destroy')->name('admin.project.delete');	
+	Route::post('admin/projects/store', 'App\Http\Controllers\CRM\Admin\ProjectController@store')->name('admin.project.store');
+
+
+
+
+	Route::get('admin/tasks','App\Http\Controllers\CRM\Admin\TaskController@index')->name('admin.task.show');
+	Route::get('admin/tasks/view/{id}','App\Http\Controllers\CRM\Admin\TaskController@view')->name('admin.task.view');
+	Route::get('admin/tasks/create', 'App\Http\Controllers\CRM\Admin\TaskController@create')->name('admin.task.create'); 
+	Route::post('admin/tasks/store', 'App\Http\Controllers\CRM\Admin\TaskController@store')->name('admin.task.store');
+	Route::get('admin/tasks/search', 'App\Http\Controllers\CRM\Admin\TaskController@searchTask')->name('admin.task.search');
+	Route::get('admin/tasks/sort/{key}', 'App\Http\Controllers\CRM\Admin\TaskController@sort')->name('admin.task.sort');
+    Route::get('admin/tasks/edit/{id}','App\Http\Controllers\CRM\Admin\TaskController@edit')->name('admin.task.edit');
+
+	Route::get('admin/tasks/edit/{id}', function () {	
+	    'uses' => 'TaskController@edit',
+	    'as'  => 'task.edit'
+	 });
+
+	Route::get('admin/tasks/list/{projectid}','App\Http\Controllers\CRM\Admin\TaskController@tasklist')->name('admin.task.list');
+	Route::get('admin/tasks/delete/{id}', 'App\Http\Controllers\CRM\Admin\TaskController@destroy')->name('admin.task.delete') ;
+	Route::get('admin/tasks/deletefile/{id}', 'App\Http\Controllers\CRM\Admin\TaskController@deleteFile')->name('admin.task.deletefile') ;
+	Route::post('admin/tasks/update/{id}', 'App\Http\Controllers\CRM\Admin\TaskController@update')->name('admin.task.update') ;
+	Route::get('admin/tasks/completed/{id}','App\Http\Controllers\CRM\Admin\TaskController@completed')->name('admin.task.completed');
+    Route::get('/users/list/{id}','App\Http\Controllers\CRM\Admin\UsersController@userTaskList')->name('admin.user.list');
+
+
+});
+//Sales-Prospects
+
+
+Route::group(['middleware'=>['auth','isVentas']], function() {
+
+    
+    //Sales-Clients
+    Route::get('ventas/client/{id}', 'App\Http\Controllers\CRM\Ventas\ClientController@show')->name('sales.client');
+    Route::get('ventas/clients', 'App\Http\Controllers\CRM\Ventas\ClientController@index')->name('sales.clients');   
+
+    //Sales-Sales
+    Route::resource("ventas/ventas", "App\Http\Controllers\CRM\Ventas\VentasController",['as' => 'sales']);
+    Route::get("ventas/vender", "App\Http\Controllers\CRM\Ventas\VenderController@index")->name("sales.vender.index");
+    Route::post("ventas/productoDeVenta", "App\Http\Controllers\CRM\Ventas\VenderController@agregarProductoVenta")->name("sales.agregarProductoVenta");
+    Route::delete("ventas/productoDeVenta", "App\Http\Controllers\CRM\Ventas\VenderController@quitarProductoDeVenta")->name("sales.quitarProductoDeVenta");
+    Route::post("ventas/cancelarVenta", "App\Http\Controllers\CRM\Ventas\VenderController@cancelarVenta")->name("sales.cancelarVenta");
+    Route::post("ventas/terminarVenta", "App\Http\Controllers\CRM\Ventas\VenderController@terminarVenta")->name("sales.terminarVenta");
+    Route::post("ventas/terminarOCancelarVenta", "App\Http\Controllers\CRM\Ventas\VenderController@terminarOCancelarVenta")->name("sales.terminarOCancelarVenta");
+
+
 });
 
-Route::group(['middleware'=>['auth']], function() {
+Route::group(['middleware'=>['auth','isMarketing']], function() {
 
-    //Employees
-    Route::get('user/users', 'App\Http\Controllers\CRM\User\UsersController@index')->name('user.users');
+    //Marketing-Prospects
+    Route::get('marketing/prospect/{id}', 'App\Http\Controllers\CRM\Marketing\ProspectController@show')->name('marketing.prospect');
+    Route::get('marketing/prospects', 'App\Http\Controllers\CRM\Marketing\ProspectController@index')->name('marketing.prospects');
+  
+    //Marketing-Clients
+    Route::get('marketing/client/{id}', 'App\Http\Controllers\CRM\Marketing\ClientController@show')->name('marketing.client');
+    Route::get('marketing/clients', 'App\Http\Controllers\CRM\Marketing\ClientController@index')->name('marketing.clients'); 
 
-    //Prospects
-    Route::get('user/prospect/{id}', 'App\Http\Controllers\CRM\User\ProspectController@show')->name('user.prospect');
-    Route::get('user/prospects', 'App\Http\Controllers\CRM\User\ProspectController@index')->name('user.prospects');
+});
 
-    //Clients
-    Route::get('user/client/{id}', 'App\Http\Controllers\CRM\User\ClientController@show')->name('user.client');
-    Route::get('user/clients', 'App\Http\Controllers\CRM\User\ClientController@index')->name('user.clients'); 
-    
-    
-    //Proyects
-
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-    Route::get('/inbox', 'App\Http\Controllers\InboxController@index')->name('inbox');
-    Route::get('/inbox/{id}', [InboxController::class, 'show'])->name('inbox.show');
-    
-    
-    
+Route::group(['middleware'=>['auth']], function() {   
+   
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');  
 });
 
  

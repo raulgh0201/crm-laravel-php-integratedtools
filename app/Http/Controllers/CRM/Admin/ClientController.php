@@ -52,24 +52,26 @@ class ClientController extends Controller
             'note' => 'required|min:20',
             'imgperfil' => 'image|nullable|max: 1999',
         ]);      
-        $prospect = new Contact;
+        $client = new Contact;
 
-        $prospect->created_by = Auth::id();
-        $prospect->name = $request->name;
-        $prospect->email = $request->email;
-        $prospect->phone = $request->phone;
-        $prospect->phone_2 = $request->phone_2;
-        $prospect->address = $request->address;
-        $prospect->city = $request->city;
-        $prospect->province_state = $request->province_state;
-        $prospect->country = $request->country;
-        $prospect->note = $request->note;
-        $prospect->isClient = true;
+        $client->created_by = Auth::id();
+        $client->name = $request->name;
+        $client->email = $request->email;
+        $client->phone = $request->phone;
+        $client->phone_2 = $request->phone_2;
+        $client->instagram_user = $request->instagram;
+        $client->facebook_user = $request->facebook;
+        $client->address = $request->address;
+        $client->city = $request->city;
+        $client->province_state = $request->province_state;
+        $client->country = $request->country;
+        $client->note = $request->note;
+        $client->isClient = true;
 
         if($request->assigned != 0){
-            $prospect->assigned = $request->assigned;
-            $prospect->date_assigned = now();
-            $prospect->isClaimable = 0;
+            $client->assigned = $request->assigned;
+            $client->date_assigned = now();
+            $client->isClaimable = 0;
         }
 
         if ($request->hasFile('imgperfil')) {
@@ -85,7 +87,7 @@ class ClientController extends Controller
             $client->isClaimable = 0;
         }
 
-        $prospect->save();
+        $client->save();
 
         return redirect()->route('admin.clients')->with('success','Cliente Creado Correctamente');   ;
     }
@@ -146,6 +148,9 @@ class ClientController extends Controller
         $client->email = $request->email;
         $client->phone = $request->phone;
         $client->phone_2 = $request->phone_2;
+        $client->phone_2 = $request->phone_2;
+        $client->instagram_user = $request->instagram;
+        $client->facebook_user = $request->facebook;
         $client->address = $request->address;
         $client->city = $request->city;
         $client->province_state = $request->province_state;

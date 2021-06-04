@@ -65,17 +65,30 @@
                       <div class="col-7">
                         <h2 class="lead red"><b>{{ $contact->name }}</b></h2>
                         <ul class="ml-4 mb-0 fa-ul text-muted red"> 
-                          <li class="small"><span class="fa-li"><i class="fas fa-lg fa-envelope"></i></span>Email: {{!isset($contact->email) ? 'No Especificado' : $contact->email}}</li><hr>
-                          <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span>Teléfono: {{!isset($contact->phone) ? "No Especificado" : $contact->phone}}</li><hr>
-                          <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone-square"></i></span>Teléfono Secundario: {{!isset($contact->phone_2  ) ? 'No Especificado' : $contact->phone_2 }}</li><hr>
-                          <li class="small"><span class="fa-li"><i class="fas fa-lg fa-route"></i></span>Dirección: {{!isset($contact->address) ? 'No Especificado' : $contact->address}}</li><hr>
-                          <li class="small"><span class="fa-li"><i class="fas fa-lg fa-street-view"></i></span>Ciudad: {{!isset($contact->city) ? 'No Especificado' :  $contact->city}}</li><hr>
-                          <li class="small"><span class="fa-li"><i class="fas fa-lg fa-location-arrow"></i></span>Provincia/Estado: {{!isset($contact->province_state) ? 'No Especificado' : $contact->province_state}}</li><hr>
-                          <li class="small"><span class="fa-li"><i class="fas fa-lg fa-globe-europe"></i></span>País: {{!isset($contact->country) ? 'No Especificado' :  $contact->country }}</li><hr>
-                          <li class="small"><span class="fa-li"><i class="fas fa-lg fa-sticky-note"></i></span>Nota: {{!isset($contact->note) ? 'No Especificado' : $contact->note}}</li><hr>
-                          <li class="small"><span class="fa-li"><i class="fas fa-lg fa-comments"></i></span>Mensaje del contacto: {{!isset($contact->contact_message ) ? 'No Especificado' : $contact->contact_message}}</li><hr>
-                          <li class="small"><span class="fa-li"><i class="fas fa-lg fa-record-vinyl"></i></span>Reclamable: {{$contact->isClaimable == true ? 'Yes' : 'No'}}</li><hr>
-                          <li class="small"><span class="fa-li"><i class="fas fa-lg fa-th-large"></i></span>Tipo de Contacto:   @if($contact->isProspect)
+                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-envelope"></i></span>Email: {{!isset($contact->email) ? 'No Especificado' : $contact->email}}</li><hr>
+                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span>Teléfono: {{!isset($contact->phone) ? "No Especificado" : $contact->phone}}</li><hr>
+                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone-square"></i></span>Teléfono Secundario: {{!isset($contact->phone_2  ) ? 'No Especificado' : $contact->phone_2 }}</li><hr>
+                        
+                        @if(empty($contact->instagram_user))
+                            <li class="small"><span class="fa-li"> <i class="fab fa-lg fa-instagram"></i></span>No Especificado</li><hr>
+                        @else
+                            <li class="small"><span class="fa-li"> <i class="fab fa-lg fa-instagram"></i></span><a href='https://www.instagram.com/{{$contact->instagram_user}}'>{{$contact->instagram_user}}</a></li><hr>
+                        @endif
+                        
+                        @if(empty($contact->facebook_user))
+                            <li class="small"><span class="fa-li"> <i class="fab fa-lg fa-facebook"></i></span>No Especificado</span></li><hr>
+                        @else
+                            <li class="small"><span class="fa-li"> <i class="fab fa-lg fa-facebook"></i></span><a href='https://www.facebook.com/{{$contact->facebook_user}}'>{{$contact->facebook_user}}</a></li><hr>
+                        @endif
+
+                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-route"></i></span>Dirección: {{!isset($contact->address) ? 'No Especificado' : $contact->address}}</li><hr>
+                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-street-view"></i></span>Ciudad: {{!isset($contact->city) ? 'No Especificado' :  $contact->city}}</li><hr>
+                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-location-arrow"></i></span>Provincia/Estado: {{!isset($contact->province_state) ? 'No Especificado' : $contact->province_state}}</li><hr>
+                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-globe-europe"></i></span>País: {{!isset($contact->country) ? 'No Especificado' :  $contact->country }}</li><hr>
+                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-sticky-note"></i></span>Nota: {{!isset($contact->note) ? 'No Especificado' : $contact->note}}</li><hr>
+                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-comments"></i></span>Mensaje del contacto: {{!isset($contact->contact_message ) ? 'No Especificado' : $contact->contact_message}}</li><hr>
+                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-record-vinyl"></i></span>Reclamable: {{$contact->isClaimable == true ? 'Yes' : 'No'}}</li><hr>
+                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-th-large"></i></span>Tipo de Contacto:   @if($contact->isProspect)
                                                                                                                                     Prospecto
                                                                                                                                     @elseif($contact->isClient)
                                                                                                                                         Cliente
@@ -152,6 +165,24 @@
                             <div class="form-group">
                                 <label for="phone_2">Teléfono Secundario:</label>
                                 <input type="text" class="form-control" name="phone_2" value="{{ $contact->phone_2 }}">
+                            </div>
+                            <div class="form-group">
+                                <label for="instagram">Usuario Instagram</label>
+                                <input type="text" class="form-control {{ $errors->has('instagram') ? 'is-invalid' : '' }}" name="instagram" value="{{ old('instagram') }}">
+                                @if($errors->has('instagram'))
+                                    <div class="invalid-feedback">
+                                        {{ $errors->first('instagram') }}
+                                    </div>
+                                @endif
+                            </div>
+                            <div class="form-group">
+                                <label for="facebook">Usuario Facebook</label>
+                                <input type="text" class="form-control {{ $errors->has('facebook') ? 'is-invalid' : '' }}" name="facebook" value="{{ old('facebook') }}">
+                                @if($errors->has('facebook'))
+                                    <div class="invalid-feedback">
+                                        {{ $errors->first('facebook') }}
+                                    </div>
+                                @endif
                             </div>
                             <div class="form-group">
                                 <label for="address">Dirección:</label>

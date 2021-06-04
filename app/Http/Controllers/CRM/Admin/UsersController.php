@@ -1,12 +1,16 @@
 <?php
 
 namespace App\Http\Controllers\CRM\Admin;
-
-use App\Models\User;
 use App\Http\Controllers\Controller;
+
+
+use App\Models\Task; 
+use App\Models\User;
+use App\Models\Project; 
+
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-
 use Illuminate\Http\Request;
 
 class UsersController extends Controller
@@ -82,5 +86,14 @@ class UsersController extends Controller
 
         return redirect('admin/user/' . $user->id)->with('success', 'Usuario Actualizado Correctamente');
 
+    }
+
+    public function userTaskList($id) {
+
+        $username = User::find($id) ;
+        $task_list = Task::where('user_id','=' , $id)->get();
+        // return view('user.list')->with('username', $username)
+        //             ->with('task_list', $task_list) ;
+        return view('user.list', compact('task_list', 'username') ) ;
     }
 }

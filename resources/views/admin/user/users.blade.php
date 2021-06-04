@@ -100,8 +100,10 @@
                                 <div class="form-group">
                                     <label for="role">Seleccionar ROL:</label>
                                     <select name="role" class="form-control {{ $errors->has('role') ? 'is-invalid' : '' }}" value="{{ old('role') }}">
-                                        <option value="user" default>User</option>
-                                        <option value="admin">Admin</option>
+                                        <option value="Admin" default>Admin</option>
+                                        <option value="Marketing">Marqueting</option>
+                                        <option value="Sales">Ventas</option>
+
                                     </select>
                                     @if($errors->has('role'))
                                         <div class="invalid-feedback">

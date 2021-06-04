@@ -2,6 +2,8 @@
 @section('title') Contactos @endsection
 @section('style')
     <link href="{{asset('assets/css/CRM/Admin/contact/common/contact/contacts-global.css')}}" rel="stylesheet">
+
+
 @endsection
 @section('left-menu')
     @include('admin.layouts.menus.sidebar')
@@ -70,6 +72,17 @@
                         <ul class="ml-4 mb-0 fa-ul text-muted">
                           <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> {{!isset($contact->phone) ? 'No Especificado' : $contact->phone}}</li><hr>
                           <li class="small"><span class="fa-li"><i class="fas fa-lg fa-envelope"></i></span> {{ $contact->email }}</li><hr>
+                          @if(empty($contact->instagram_user))
+                            <li class="small"><span class="fa-li"> <i class="fab fa-lg fa-instagram"></i></span>No Especificado</li><hr>
+                          @else
+                            <li class="small"><span class="fa-li"> <i class="fab fa-lg fa-instagram"></i></span><a href='https://www.instagram.com/{{$contact->instagram_user}}'>{{$contact->instagram_user}}</a></li><hr>
+                          @endif
+                        
+                         @if(empty($contact->facebook_user))
+                            <li class="small"><span class="fa-li"> <i class="fab fa-lg fa-facebook"></i></span>No Especificado</span></li><hr>
+                         @else
+                            <li class="small"><span class="fa-li"> <i class="fab fa-lg fa-facebook"></i></span><a href='https://www.facebook.com/{{$contact->facebook_user}}'>{{$contact->facebook_user}}</a></li><hr>
+                          @endif
                         </ul>
                       </div>
                       <div class="col-5 text-center">
@@ -141,6 +154,24 @@
                             <div class="form-group">
                                 <label for="phone_2">Teléfono Secundario:</label>
                                 <input type="text" class="form-control" name="phone_2" value="{{ old('phone_2') }}">
+                            </div>
+                            <div class="form-group">
+                                <label for="instagram">Usuario Instagram</label>
+                                <input type="text" class="form-control {{ $errors->has('instagram') ? 'is-invalid' : '' }}" name="instagram" value="{{ old('instagram') }}">
+                                @if($errors->has('instagram'))
+                                    <div class="invalid-feedback">
+                                        {{ $errors->first('instagram') }}
+                                    </div>
+                                @endif
+                            </div>
+                            <div class="form-group">
+                                <label for="facebook">Usuario Facebook</label>
+                                <input type="text" class="form-control {{ $errors->has('facebook') ? 'is-invalid' : '' }}" name="facebook" value="{{ old('facebook') }}">
+                                @if($errors->has('facebook'))
+                                    <div class="invalid-feedback">
+                                        {{ $errors->first('facebook') }}
+                                    </div>
+                                @endif
                             </div>
                             <div class="form-group">
                                 <label for="address">Dirección:</label>
