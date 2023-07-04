@@ -18,14 +18,7 @@ class ClientController extends Controller
      */
     public function index()
     {
-        $user = Auth::user();  
-        
-        $clients =  Contact::where('assigned', Auth::id() )
-                            ->where('isClient', true)
-                            ->paginate(10);
-
-        return view('ventas.client.clients', compact('clients','users','user'));
-        //return view('admin.prospects', ['prospects' => $prospects, 'users' => $users]);
+    
     }
 
     /**

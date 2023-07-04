@@ -19,7 +19,6 @@ class ContactController extends Controller
         $contacts = Contact::paginate(10);
         $user = Auth::user();  
         $users = User::all();
-
         return view('admin.contact.contacts', compact('contacts','users','user'));
         //return view('admin.prospects', ['prospects' => $prospects, 'users' => $users]);
     }

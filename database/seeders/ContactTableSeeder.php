@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Contact;
 use Illuminate\Database\Seeder;
-
 
 class ContactTableSeeder extends Seeder
 {
@@ -14,8 +14,6 @@ class ContactTableSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\Contact::factory()
-            ->times(50)
-            ->create();
+        Contact::factory()->count(50)->create();
     }
 }

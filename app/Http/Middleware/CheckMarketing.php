@@ -18,7 +18,7 @@ class CheckMarketing
     public function handle(Request $request, Closure $next)
     {
         
-        if(Auth::user()->role !== 'Marketing'){
+        if(Auth::user()->role !== 'marketing'){
             return redirect('home');
         }
        

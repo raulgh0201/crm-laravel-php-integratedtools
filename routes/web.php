@@ -22,8 +22,8 @@ Route::get('/', function () {
 Auth::routes();
 
 // ------------------------------register---------------------------------------
-Route::get('/register', 'App\Http\Controllers\Auth\RegisterController@showRegistrationForm')->name('register');
-Route::post('/register', 'App\Http\Controllers\Auth\RegisterController@register')->name('register');
+Route::get('/register', 'App\Http\Controllers\Auth\RegisterController@showRegistrationForm')->name('register.form');
+Route::post('/register', 'App\Http\Controllers\Auth\RegisterController@register')->name('register.submit');
 
 // -----------------------------login-----------------------------------------
 Route::get('/login', 'App\Http\Controllers\Auth\LoginController@showLoginForm')->name('login');
@@ -106,11 +106,10 @@ Route::group(['middleware'=>['auth','isAdmin']], function() {
 	Route::get('admin/tasks/sort/{key}', 'App\Http\Controllers\CRM\Admin\TaskController@sort')->name('admin.task.sort');
     Route::get('admin/tasks/edit/{id}','App\Http\Controllers\CRM\Admin\TaskController@edit')->name('admin.task.edit');
 
-	Route::get('admin/tasks/edit/{id}', function () {	
-	    'uses' => 'TaskController@edit',
-	    'as'  => 'task.edit'
-	 });
-
+	Route::get('admin/tasks/edit/{id}', function () {
+        return 'TaskController@edit';
+    })->name('task.edit');
+    
 	Route::get('admin/tasks/list/{projectid}','App\Http\Controllers\CRM\Admin\TaskController@tasklist')->name('admin.task.list');
 	Route::get('admin/tasks/delete/{id}', 'App\Http\Controllers\CRM\Admin\TaskController@destroy')->name('admin.task.delete') ;
 	Route::get('admin/tasks/deletefile/{id}', 'App\Http\Controllers\CRM\Admin\TaskController@deleteFile')->name('admin.task.deletefile') ;

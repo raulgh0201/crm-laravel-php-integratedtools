@@ -6,7 +6,7 @@ header ("Expires: Sat, 1 Jul 2000 05:00:00 GMT");
 @extends('layouts.app')
 @section('content')
 <div class="login-form">
-    <form method="POST" action="{{ route('register') }}">
+    <form method="POST" action="{{ route('register.submit') }}">
         @csrf
         <div class="text-center">
             <a href="index.html" aria-label="Space">

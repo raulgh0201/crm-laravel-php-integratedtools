@@ -90,8 +90,8 @@ class LoginController extends Controller
 
     protected function sendFailedResponse($msg = null)
     {
-        return redirect()->route('login')
-            ->withErrors(['msg' => $msg ?: 'Unable to login, try with another provider to login.']);
+        return redirect('login')->with('error', 'No se puede iniciar sesión, intente con otro proveedor para iniciar sesión.');
+
     }
 
     protected function loginOrCreateAccount($providerUser, $driver)
@@ -99,7 +99,7 @@ class LoginController extends Controller
         // check for already has account
         $user = User::where('email', $providerUser->getEmail())->first();
 
-        // if user already found
+        /// if user already found
         if( $user ) {
             // update the avatar and provider that might have changed
             $user->update([

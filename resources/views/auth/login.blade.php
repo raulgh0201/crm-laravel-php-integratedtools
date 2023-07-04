@@ -67,7 +67,7 @@
         </div>
 
         <div class="text-center mb-3">
-            <p class="text-muted">No tienes una cuenta? <a href="{{route('register')}}">Crear Cuenta</a></p>
+            <p class="text-muted">No tienes una cuenta? <a href="{{route('register.form')}}">Crear Cuenta</a></p>
         </div>
 		<div class="or-seperator"><i>O</i></div>
 

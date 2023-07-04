@@ -18,32 +18,24 @@ class UsersTableSeeder extends Seeder
     {
         User::create([
             'name' =>   'Raul Garcia',
-            'email' => 'aplicacionwebm12@gmail.com'  ,
+            'email' => 'raulgarcia@integratedtools.com'  ,
             'role' => 'admin',
             'isActive' => 1,
             'password' => Hash::make('P@ssw0rd') ,         
         ]);
 
         User::create([
-            'name' =>   'Arnau Ribas',
-            'email' => 'arnauribas@gmail.com'  ,
-            'role' => 'user',
+            'name' =>   'Rol marqueting',
+            'email' => 'rolmarqueting@integratedtools.com'  ,
+            'role' => 'marketing',
             'isActive' => 1,
             'password' => Hash::make('P@ssw0rd') ,         
         ]);
 
         User::create([
-            'name' =>   'Alias abduscan',
-            'email' => 'aliasabduscan@gmail.com'  ,
-            'role' => 'user',
-            'isActive' => 1,
-            'password' => Hash::make('P@ssw0rd') ,         
-        ]);
-
-        User::create([
-            'name' =>   'Alisa Melano',
-            'email' => 'alisamelano@gmail.com'  ,
-            'role' => 'user',
+            'name' =>   'Rol sales',
+            'email' => 'rolsales@integratedtools.com'  ,
+            'role' => 'sales',
             'isActive' => 1,
             'password' => Hash::make('P@ssw0rd') ,         
         ]);

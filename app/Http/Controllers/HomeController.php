@@ -37,7 +37,7 @@ class HomeController extends Controller
         $user = Auth::user();
          
        
-        if(Auth::user()->role === 'Admin'){
+        if(Auth::user()->role === 'admin'){
 
             $n_Users  =  User::all()->count();  
             $n_Contacts =  Contact::all()->count();
@@ -50,7 +50,7 @@ class HomeController extends Controller
 
             return view('admin.index', compact('user','n_Users','n_Contacts','n_Prospects','n_Clients','bestSeller','bestBuyer'));
 
-        }elseif(Auth::user()->role === 'Marketing'){
+        }elseif(Auth::user()->role === 'marketing'){
 
             //echo Auth::id();
             $n_Prospects =  Contact::where('assigned', Auth::id() )
@@ -75,7 +75,7 @@ class HomeController extends Controller
 
             return view('marketing.index', compact('user','n_Prospects','n_Clients','n_ClientsWithSocial','n_ProspectsWithSocial'));
 
-        }elseif(Auth::user()->role === 'Sales'){
+        }elseif(Auth::user()->role === 'sales'){
 
 
             $n_Prospects = Contact::where('assigned', Auth::id() )

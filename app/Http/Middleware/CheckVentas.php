@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CheckVentas
 {
@@ -16,10 +17,9 @@ class CheckVentas
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Auth::user()->role !== 'Sales'){
-            return redirect('home');
+        if(Auth::user()->role !== 'sales'){
+            echo Auth::user()->role;
         }
        
-        return $next($request);
     }
 }
