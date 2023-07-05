@@ -10,8 +10,11 @@
 @section('content')
 
     @include('admin.layouts.crm.dashboard')
-    <!--@livewire("chat-form")-->
+   {{--  @comment 
+    @livewire("chat-form")--> 
    <!-- @livewire("chat-list")-->
+   
+    @endcomment--}}
 
 
 @endsection

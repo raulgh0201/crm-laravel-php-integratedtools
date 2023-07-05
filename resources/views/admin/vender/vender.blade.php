@@ -7,7 +7,7 @@
 
 @endsection
 
-@section('content'))
+@section('content')
     <div class="row">
         <div class="col-12">
             <h1>Nueva venta <i class="fa fa-cart-plus"></i></h1>

@@ -122,7 +122,7 @@ Route::group(['middleware'=>['auth','isAdmin']], function() {
 //Sales-Prospects
 
 
-Route::group(['middleware'=>['auth','isVentas']], function() {
+Route::group(['middleware'=>['auth','isSales']], function() {
 
     
     //Sales-Clients

@@ -113,8 +113,9 @@
                             <label for="role">Rol:</label>
                             <select name="role" class="form-control  {{ $errors->has('role') ? 'is-invalid' : '' }}">
                             <option value="{{ $employee->role }}">{{ ucfirst($employee->role) }}</option>
-                                <option value="user">User</option>
-                                <option value="admin">Admin</option>
+                                  <option value="admin">Admin</option>
+                                <option value="sales">Sales</option>
+                                <option value="marketing">Marketing</option>
                             </select>
                             @if ($errors->has('role'))
                                 <!--No funciona la clase invalid-feedback para mostrar los errores, cambiar por otra o arreglar-->

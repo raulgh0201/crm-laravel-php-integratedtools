@@ -1,5 +1,5 @@
 <?php
-namespace App\Http\Controllers\CRM\Admin;
+namespace App\Http\Controllers\CRM\Ventas;
 
 
 use Session;

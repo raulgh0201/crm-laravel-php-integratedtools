@@ -18,8 +18,8 @@ class CheckVentas
     public function handle(Request $request, Closure $next)
     {
         if(Auth::user()->role !== 'sales'){
-            echo Auth::user()->role;
+            return $next($request);        
         }
-       
+       return $next($request);
     }
 }
