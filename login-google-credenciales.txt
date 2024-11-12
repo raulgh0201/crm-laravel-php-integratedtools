@@ -1,2 +1,0 @@
-id cliente   200638383709-9beu3cokgbddn5l95vp4m5f7qh1oro9j.apps.googleusercontent.com
-secreto   P7-QX48KnUfK6mb4RvCvEx_v
